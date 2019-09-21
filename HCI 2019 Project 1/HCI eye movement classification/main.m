@@ -145,7 +145,7 @@ end
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IDT(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_MST(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IKF(eye_record);
-%     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_FIR(eye_record);
+    [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_KMeans(eye_record);
     EMD_Score(eye_record,stimulus_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD);
     
     

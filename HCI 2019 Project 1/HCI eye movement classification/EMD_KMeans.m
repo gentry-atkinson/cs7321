@@ -4,7 +4,7 @@
 % Provided for CS7321 at Texas State University
 function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD]= EMD_KMeans(eye_record)
 
-    display('>>> EMD_KMeans starts..................................................................');
+    display('>>> EMD_KMeans starts...............................................................');
     
     global FIX_PER;
     global SAC_PER;
@@ -23,7 +23,17 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
     pursuit_counter = 0;
     noise_counter = 0;
     
+    display(length(eye_record));
     
+    for t=1:length(eye_record)
+        data(t,1) = eye_record(t).xy_velocity_measured_deg;
+        data(t,2) = eye_record(t).x_velocity_measured_deg;
+        data(t,3) = eye_record(t).y_velocity_measured_deg;
+    end
+
+%     data(:,1) = eye_record(:).xy_velocity_measured_deg;
+    
+    clusters = kmeans(data, 2);
 
 
     FIX_PER     = 100 * fixation_counter / (saccade_counter + fixation_counter + pursuit_counter + noise_counter);
