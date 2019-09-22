@@ -133,26 +133,36 @@ end
     % Remove the next comment to display the graph of stimulus signal Vs eye_record signal
     
      EMD_Plot(eye_record, stimulus_record,'stimulus');
+     
+     eye_record_ivt = eye_record;
+     eye_record_kmeans = eye_record;
+     
+%      fixation_filtered_EMD_ivt = fixation_filtered_EMD;
+%      fixation_filtered_EMD_kmeans = fixation_filtered_EMD;
+%      
+%      saccade_filtered_EMD_ivt = saccade_filtered_EMD;
+%      saccade_filtered_EMD_kmeans = saccade_filtered_EMD;
     
     % This will call the detection algorithm and inside the detection
     % algorithm, grouping/merging function EMD_Merge()
     
 % if(score_IVT)    
-    [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IVT(eye_record);
+    [eye_record_ivt,fixation_filtered_EMD_ivt,saccade_filtered_EMD_ivt,pursuit_detected_EMD] = EMD_IVT(eye_record);
     
 % UNCOMMENT CLASSIFICATION ALGORITHM HERE THAT YOU INTEND TO CLASSIFY    
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_HMM(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IDT(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_MST(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IKF(eye_record);
-    [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_KMeans(eye_record);
-    EMD_Score(eye_record,stimulus_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD);
+    [eye_record_kmeans,fixation_filtered_EMD_kmeans,saccade_filtered_EMD_kmeans,pursuit_detected_EMD] = EMD_KMeans(eye_record);
+    EMD_Score(eye_record_kmeans,stimulus_record,fixation_filtered_EMD_kmeans,saccade_filtered_EMD_kmeans,pursuit_detected_EMD);
     
     
     % Remove the next comment to display the graph of the eye movement
     % detection after the grouping and merging 
     
-     EMD_Plot(eye_record, stimulus_record,'I-VT');
+     EMD_Plot(eye_record_ivt, stimulus_record,'I-VT');
+     EMD_Plot(eye_record_kmeans, stimulus_record,'K-Means');
     
 % end
 

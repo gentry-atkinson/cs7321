@@ -42,6 +42,8 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
            fixation_counter = saccade_counter + 1; 
         elseif (clusters(t) == 2)
            saccade_counter = saccade_counter + 1;
+        else
+            eye_record(t).xy_movement_EMD = 4;
         end
             
     end
