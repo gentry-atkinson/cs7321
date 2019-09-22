@@ -27,9 +27,9 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
     data = zeros(3, length(eye_record));
     
     for t=1:length(eye_record)
-        data(t,1) = eye_record(t).xy_velocity_measured_deg;
-        data(t,2) = eye_record(t).x_velocity_measured_deg;
-        data(t,3) = eye_record(t).y_velocity_measured_deg;
+        data(t,1) = abs(eye_record(t).xy_velocity_measured_deg);
+        data(t,2) = abs(eye_record(t).x_velocity_measured_deg);
+        data(t,3) = abs(eye_record(t).y_velocity_measured_deg);
     end
 
 %     data(:,1) = eye_record(:).xy_velocity_measured_deg;
