@@ -24,6 +24,7 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
     noise_counter = 0;
     
     display(length(eye_record));
+    data = zeros(3, length(eye_record));
     
     for t=1:length(eye_record)
         data(t,1) = eye_record(t).xy_velocity_measured_deg;
@@ -34,6 +35,16 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
 %     data(:,1) = eye_record(:).xy_velocity_measured_deg;
     
     clusters = kmeans(data, 2);
+    
+    for t=1:length(clusters)
+        eye_record(t).xy_movement_EMD = clusters(t);
+        if (clusters(t) == 1)
+           fixation_counter = saccade_counter + 1; 
+        elseif (clusters(t) == 2)
+           saccade_counter = saccade_counter + 1;
+        end
+            
+    end
 
 
     FIX_PER     = 100 * fixation_counter / (saccade_counter + fixation_counter + pursuit_counter + noise_counter);
