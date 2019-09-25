@@ -23,7 +23,6 @@ function [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected
     pursuit_counter = 0;
     noise_counter = 0;
     
-    display(length(eye_record));
     data = zeros(3, length(eye_record));
     
     for t=1:length(eye_record)

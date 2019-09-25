@@ -136,17 +136,12 @@ end
      
      eye_record_ivt = eye_record;
      eye_record_kmeans = eye_record;
-     
-%      fixation_filtered_EMD_ivt = fixation_filtered_EMD;
-%      fixation_filtered_EMD_kmeans = fixation_filtered_EMD;
-%      
-%      saccade_filtered_EMD_ivt = saccade_filtered_EMD;
-%      saccade_filtered_EMD_kmeans = saccade_filtered_EMD;
     
     % This will call the detection algorithm and inside the detection
     % algorithm, grouping/merging function EMD_Merge()
     
-% if(score_IVT)    
+% if(score_IVT)
+    display("Running I-VT eye tracking..."); 
     [eye_record_ivt,fixation_filtered_EMD_ivt,saccade_filtered_EMD_ivt,pursuit_detected_EMD] = EMD_IVT(eye_record);
     
 % UNCOMMENT CLASSIFICATION ALGORITHM HERE THAT YOU INTEND TO CLASSIFY    
@@ -154,7 +149,11 @@ end
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IDT(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_MST(eye_record);
 %     [eye_record,fixation_filtered_EMD,saccade_filtered_EMD,pursuit_detected_EMD] = EMD_IKF(eye_record);
+    display("Running K-Means eye tracking...");
     [eye_record_kmeans,fixation_filtered_EMD_kmeans,saccade_filtered_EMD_kmeans,pursuit_detected_EMD] = EMD_KMeans(eye_record);
+    %display("I-VT Scores...");
+    %EMD_Score(eye_record_ivt,stimulus_record,fixation_filtered_EMD_kmeans,saccade_filtered_EMD_kmeans,pursuit_detected_EMD);
+    display("K-Means Scores...");
     EMD_Score(eye_record_kmeans,stimulus_record,fixation_filtered_EMD_kmeans,saccade_filtered_EMD_kmeans,pursuit_detected_EMD);
     
     
