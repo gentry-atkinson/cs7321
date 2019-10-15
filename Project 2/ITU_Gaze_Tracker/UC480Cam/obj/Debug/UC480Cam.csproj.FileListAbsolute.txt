@@ -1,0 +1,13 @@
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/UC480Cam.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/UC480Cam.pdb
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/Emgu.CV.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/Emgu.Util.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/zlib.net.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/Emgu.CV.xml
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/bin/Debug/Emgu.Util.xml
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/obj/Debug/ResolveAssemblyReference.cache
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/obj/Debug/UC480Cam.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/UC480Cam/obj/Debug/UC480Cam.pdb
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/UC480Cam/obj/Debug/UC480Cam.csprojAssemblyReference.cache
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/UC480Cam/obj/Debug/UC480Cam.dll
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/UC480Cam/obj/Debug/UC480Cam.pdb

@@ -1,0 +1,8 @@
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/Debug/GazeTrackerClient.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/Debug/GazeTrackerClient.pdb
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/ResolveAssemblyReference.cache
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/GazeTrackerClient.dll
+C:/Users/Corey/Desktop/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/GazeTrackerClient.pdb
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/GazeTrackerClient.csprojAssemblyReference.cache
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/GazeTrackerClient.dll
+/home/gmatkins/Desktop/cs7321/Project 2/ITU_Gaze_Tracker/GazeTrackerClient/obj/Debug/GazeTrackerClient.pdb

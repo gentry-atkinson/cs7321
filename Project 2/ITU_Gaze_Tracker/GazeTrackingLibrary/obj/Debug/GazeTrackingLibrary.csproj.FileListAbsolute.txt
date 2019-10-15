@@ -1,0 +1,5 @@
+C:\Users\Corey\Desktop\ITU_Gaze_Tracker\Debug\GazeTrackingLibrary.dll
+C:\Users\Corey\Desktop\ITU_Gaze_Tracker\Debug\GazeTrackingLibrary.pdb
+C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.dll
+C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.pdb
