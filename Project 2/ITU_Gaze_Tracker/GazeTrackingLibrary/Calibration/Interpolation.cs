@@ -199,7 +199,7 @@ namespace GazeTrackingLibrary.Calibration
 				averageErrorRight = Convert.ToInt32(Math.Round(totalError / calibTargets.Count));
 			}
 		}
-
+//// Right here!!!! Replace this!!!
         public double CalculateDegreesLeft()
         {
             if (!CalibrationDataLeft.Calibrated)
@@ -213,6 +213,7 @@ namespace GazeTrackingLibrary.Calibration
             }
             return degreesLeft;
         }
+//// Right here!!!! Replace this!!!
 
         public double CalculateDegreesRight()
         {
