@@ -209,9 +209,10 @@ namespace GazeTrackingLibrary.Calibration
                 Random RNG = new Random();
                 double averageErrorMM = ConvertPixToMm(averageErrorLeft);
                 degreesLeft = 180 * Math.Atan(averageErrorMM / GTSettings.Current.Calibration.DistanceFromScreen) / Math.PI;
-				//degreesLeft = (180/PI)*2 * ARCTAN ( ERROR_MM / ( 2 * EYE_DISTANCE ) )
+				//degreesLeft = (180/PI)*2 * ARCTAN ( ERROR_MM / ( 2 * EYE_DISTANCE ) ) //from slides
                 //degreesLeft = 5 * RNG.NextDouble();
             }
+			//CalibrationDataLeft.AverageError = degreesLeft;
             return degreesLeft;
         }
 //// Right here!!!! Replace this!!!
@@ -736,6 +737,7 @@ namespace GazeTrackingLibrary.Calibration
 
 			CalibrationDataLeft.Calibrated = true;
 			CalculateAverageErrorLeft();
+			//CalibrationDataLeft.AverageError = CalculateAverageErrorLeft();
 			CalculateDegreesLeft();
 
 			if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
