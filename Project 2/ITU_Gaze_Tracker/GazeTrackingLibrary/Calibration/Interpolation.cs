@@ -209,6 +209,7 @@ namespace GazeTrackingLibrary.Calibration
                 Random RNG = new Random();
                 double averageErrorMM = ConvertPixToMm(averageErrorLeft);
                 degreesLeft = 180 * Math.Atan(averageErrorMM / GTSettings.Current.Calibration.DistanceFromScreen) / Math.PI;
+				//degreesLeft = (180/PI)*2 * ARCTAN ( ERROR_MM / ( 2 * EYE_DISTANCE ) )
                 //degreesLeft = 5 * RNG.NextDouble();
             }
             return degreesLeft;
@@ -368,14 +369,14 @@ namespace GazeTrackingLibrary.Calibration
 //// Why was nothing catching CalculateDegreesLeft's return???
 				CalibrationDataLeft.Calibrated = true;
 				CalculateAverageErrorLeft();
-				degreesLeft = CalculateDegreesLeft();
+				CalculateDegreesLeft();
 
 				if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 				{
 					CalibrationDataRight.Calibrated = true;
 //// Same for right?????
 					CalculateAverageErrorRight();
-					degreesRight = CalculateDegreesRight();
+					CalculateDegreesRight();
 				}
 			}
 			catch (Exception ex)
