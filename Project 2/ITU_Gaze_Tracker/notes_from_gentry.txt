@@ -2,3 +2,4 @@
 2) we've found that we need to select remote monocular in the dropdown menu.
 	This will call calibPolynomial rather than calibPupil
 3) GTSettings.cs has kind of a switchboard for many differecnt setting including distance from screen which is currently 600mm
+4) CalibPolynomial is using a least squares regression to solve for xLeft and yLeft
