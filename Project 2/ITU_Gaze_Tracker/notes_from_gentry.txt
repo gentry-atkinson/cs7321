@@ -1,0 +1,4 @@
+1) we've updated calculatedegreesleft in interpolation.cs on line 211
+2) we've found that we need to select remote monocular in the dropdown menu.
+	This will call calibPolynomial rather than calibPupil
+3) GTSettings.cs has kind of a switchboard for many differecnt setting including distance from screen which is currently 600mm
