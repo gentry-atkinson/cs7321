@@ -1,17 +1,17 @@
 ﻿// <copyright file="CalibrationSettings.cs" company="ITU">
 // ******************************************************
 // GazeTrackingLibrary for ITU GazeTracker
-// Copyright (C) 2010 Martin Tall  
+// Copyright (C) 2010 Martin Tall
 // ------------------------------------------------------------------------
-// This program is free software; you can redistribute it and/or modify it 
-// under the terms of the GNU General Public License as published by the 
-// Free Software Foundation; either version 3 of the License, 
+// This program is free software; you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation; either version 3 of the License,
 // or (at your option) any later version.
-// This program is distributed in the hope that it will be useful, 
-// but WITHOUT ANY WARRANTY; without even the implied warranty of 
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 // General Public License for more details.
-// You should have received a copy of the GNU General Public License 
+// You should have received a copy of the GNU General Public License
 // along with this program; if not, see http://www.gnu.org/licenses/.
 // **************************************************************
 // </copyright>
@@ -56,6 +56,7 @@ namespace GazeTrackingLibrary.Settings
         private Monitor trackingMonitor = Monitor.Primary;
         private int areaWidth = 0;
         private int areaHeight = 0;
+        //set this to something reasonable
         private int distanceFromScreen = 0;
         private int defaultDistanceFromScreen = 600;
         private double acceleration = 6;
@@ -442,10 +443,10 @@ namespace GazeTrackingLibrary.Settings
                             case "TrackingMonitor":
                                 trackingMonitor = (Monitor) Enum.Parse(typeof (Monitor), xmlReader.Value);
                                 break;
-                            case "AreaWidth":                               
+                            case "AreaWidth":
                                 AreaWidth = Int32.Parse(xmlReader.Value);
                                 break;
-                            case "AreaHeight":                               
+                            case "AreaHeight":
                                 AreaHeight = Int32.Parse(xmlReader.Value);
                                 break;
                             case "DistanceFromScreen":
