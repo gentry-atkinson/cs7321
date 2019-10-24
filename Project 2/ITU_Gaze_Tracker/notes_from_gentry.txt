@@ -11,3 +11,5 @@
 	No, set CalibrationDataLeft.AverageError inside of the mmtodeg method
 
 6) Distance is calculated in Operation.cs. The Distance method returns the square root of the difference of the squares. These returns are averaged in Interpolation.cs which is an accurate calculation of Spatial Precision.
+
+7) The stdDeviationGazeCoordinatesLeft member belongs to each Calibration target. Their mean is the spatial precision of the rig.
