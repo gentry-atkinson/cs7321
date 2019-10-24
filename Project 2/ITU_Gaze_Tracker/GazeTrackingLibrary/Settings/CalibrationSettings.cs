@@ -1,4 +1,11 @@
-﻿// <copyright file="CalibrationSettings.cs" company="ITU">
+/****************************************************
+Team members names: Gentry Atkinson and Ajmal Hussain
+Date: October 23 2019
+Project Number: 2
+Instructor: Komogortsev
+****************************************************/
+
+// <copyright file="CalibrationSettings.cs" company="ITU">
 // ******************************************************
 // GazeTrackingLibrary for ITU GazeTracker
 // Copyright (C) 2010 Martin Tall
@@ -57,7 +64,7 @@ namespace GazeTrackingLibrary.Settings
         private int areaWidth = 0;
         private int areaHeight = 0;
         //set this to something reasonable
-        private int distanceFromScreen = 0;
+        private int distanceFromScreen = 200;
         private int defaultDistanceFromScreen = 600;
         private double acceleration = 6;
         private bool autoAccept = true;

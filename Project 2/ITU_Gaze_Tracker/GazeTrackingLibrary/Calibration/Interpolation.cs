@@ -1,3 +1,10 @@
+/****************************************************
+Team members names: Gentry Atkinson and Ajmal Hussain
+Date: October 23 2019
+Project Number: 2
+Instructor: Komogortsev
+****************************************************/
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -370,7 +377,7 @@ namespace GazeTrackingLibrary.Calibration
 						ct.averageErrorRight = Operations.Distance(ct.meanGazeCoordinatesRight, ct.targetCoordinates);
 				}
 
-
+				Console.Out.WriteLine("********************Spatial Presicion: " + sum_precision/9);
 
 
 
