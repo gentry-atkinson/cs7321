@@ -230,7 +230,7 @@ namespace GazeTrackingLibrary.Calibration
             }
             return degreesRight;
         }
-		
+
 //// Right here!!!! Replace this!!!
 
 		private static double ConvertPixToMm(double pixels)
@@ -340,6 +340,8 @@ namespace GazeTrackingLibrary.Calibration
 					CalibrationDataRight.CoeffsY = Operations.SolveLeastSquares(designMatrixRight, targets.GetCol(1));
 				}
 
+				double sum_precision;
+
 				// For each image we calculate the estimated gaze coordinates
 				foreach (CalibrationTarget ct in CalibrationTargets)
 				{
@@ -362,9 +364,15 @@ namespace GazeTrackingLibrary.Calibration
 					ct.CalculateAverageCoords();
 					ct.averageErrorLeft = Operations.Distance(ct.meanGazeCoordinatesLeft, ct.targetCoordinates);
 
+					sum_precision += ct.stdDeviationGazeCoordinatesLeft;
+
 					if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 						ct.averageErrorRight = Operations.Distance(ct.meanGazeCoordinatesRight, ct.targetCoordinates);
 				}
+
+
+
+
 
 				//calibrated = true;
 //// Why was nothing catching CalculateDegreesLeft's return???
@@ -545,6 +553,7 @@ namespace GazeTrackingLibrary.Calibration
 	{
 		private int numOutliersRemovedLeft;
 		private int numOutliersRemovedRight;
+
 
 		#region Constructor
 
@@ -773,6 +782,7 @@ namespace GazeTrackingLibrary.Calibration
 				{
 					meanLeft = Operations.Mean(ct.DifferenceVectorLeft);
 					stddevLeft = Operations.StandardDeviation(ct.DifferenceVectorLeft);
+					//write the sd (converted to degrees) as spatial precision
 				}
 
 				// Right
@@ -805,7 +815,7 @@ namespace GazeTrackingLibrary.Calibration
 								numOutliersRemovedLeft++;
 							}
 
-						// remove right (if binocular)                      
+						// remove right (if binocular)
 						if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 						{
 							if (ct.DifferenceVectorRight != null && i <= ct.DifferenceVectorRight.Length)
