@@ -1,12 +1,12 @@
-/****************************************************
+﻿/****************************************************
 Team members names: Gentry Atkinson and Ajmal Hussain
 Date: October 23 2019
 Project Number: 2
 Instructor: Komogortsev
 ****************************************************/
-
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -177,18 +177,18 @@ namespace GazeTrackingLibrary.Calibration
 
 		protected void CalculateAverageErrorLeft()
 		{
-			if (!CalibrationDataLeft.Calibrated)
-				averageErrorLeft = 0;
-			else
-			{
-				averageErrorLeft = 0;
-				double totalError = 0;
+            if (!CalibrationDataLeft.Calibrated)
+                averageErrorLeft = 0;
+            else
+            {
+                averageErrorLeft = 0;
+                double totalError = 0;
 
-				foreach (CalibrationTarget ct in CalibrationTargets)
-					totalError += ct.averageErrorLeft;
+                foreach (CalibrationTarget ct in CalibrationTargets)
+                    totalError += ct.averageErrorLeft;
 
-				averageErrorLeft = Convert.ToInt32(Math.Round(totalError / calibTargets.Count));
-			}
+                averageErrorLeft = Convert.ToInt32(Math.Round(totalError / calibTargets.Count));
+            }
 		}
 
 		protected void CalculateAverageErrorRight()
@@ -206,7 +206,7 @@ namespace GazeTrackingLibrary.Calibration
 				averageErrorRight = Convert.ToInt32(Math.Round(totalError / calibTargets.Count));
 			}
 		}
-//// Right here!!!! Replace this!!!
+
         public double CalculateDegreesLeft()
         {
             if (!CalibrationDataLeft.Calibrated)
@@ -215,14 +215,12 @@ namespace GazeTrackingLibrary.Calibration
             {
                 Random RNG = new Random();
                 double averageErrorMM = ConvertPixToMm(averageErrorLeft);
-                degreesLeft = 180 * Math.Atan(averageErrorMM / GTSettings.Current.Calibration.DistanceFromScreen) / Math.PI;
-				//degreesLeft = (180/PI)*2 * ARCTAN ( ERROR_MM / ( 2 * EYE_DISTANCE ) ) //from slides
+                degreesLeft = (180/Math.PI)* Math.Atan(averageErrorMM / (2*GTSettings.Current.Calibration.DistanceFromScreen));
                 //degreesLeft = 5 * RNG.NextDouble();
             }
-			//CalibrationDataLeft.AverageError = degreesLeft;
+            CalibrationDataLeft.AverageError = degreesLeft;
             return degreesLeft;
         }
-//// Right here!!!! Replace this!!!
 
         public double CalculateDegreesRight()
         {
@@ -232,15 +230,13 @@ namespace GazeTrackingLibrary.Calibration
             {
                 Random RNG = new Random();
                 double averageErrorMM = ConvertPixToMm(averageErrorRight);
-                degreesRight = 180 * Math.Atan(averageErrorMM / GTSettings.Current.Calibration.DistanceFromScreen) / Math.PI;
+                degreesRight = (180/Math.PI) * Math.Atan(averageErrorMM / GTSettings.Current.Calibration.DistanceFromScreen) / Math.PI;
                 //degreesRight = 5 * RNG.NextDouble();
             }
             return degreesRight;
         }
 
-//// Right here!!!! Replace this!!!
-
-		private static double ConvertPixToMm(double pixels)
+		public static double ConvertPixToMm(double pixels)
 		{
 			return pixels * ScreenParameters.PrimarySize.Width / ScreenParameters.PrimaryResolution.Width;
 		}
@@ -346,9 +342,7 @@ namespace GazeTrackingLibrary.Calibration
 					CalibrationDataRight.CoeffsX = Operations.SolveLeastSquares(designMatrixRight, targets.GetCol(0));
 					CalibrationDataRight.CoeffsY = Operations.SolveLeastSquares(designMatrixRight, targets.GetCol(1));
 				}
-
-				double sum_precision;
-
+                double sum_precision = 0;
 				// For each image we calculate the estimated gaze coordinates
 				foreach (CalibrationTarget ct in CalibrationTargets)
 				{
@@ -367,38 +361,34 @@ namespace GazeTrackingLibrary.Calibration
 							ct.estimatedGazeCoordinatesRight.Add(GetGazeCoordinates(EyeEnum.Right));
 						}
 					}
-
+                    
 					ct.CalculateAverageCoords();
 					ct.averageErrorLeft = Operations.Distance(ct.meanGazeCoordinatesLeft, ct.targetCoordinates);
+                    //double precision = Operations.StandardDeviation(ct.estimatedGazeCoordinatesLeft);
+                    sum_precision += ct.stdDeviationGazeCoordinatesLeft;
 
-					sum_precision += ct.stdDeviationGazeCoordinatesLeft;
-
-					if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
+                    if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 						ct.averageErrorRight = Operations.Distance(ct.meanGazeCoordinatesRight, ct.targetCoordinates);
 				}
-
-				Console.Out.WriteLine("********************Spatial Presicion: " + sum_precision/9);
-
-
-
+                Console.WriteLine("**************************Precision:"+sum_precision/9);
 				//calibrated = true;
-//// Why was nothing catching CalculateDegreesLeft's return???
 				CalibrationDataLeft.Calibrated = true;
-				CalculateAverageErrorLeft();
-				CalculateDegreesLeft();
+			    CalculateAverageErrorLeft();
+                CalculateDegreesLeft();
+                System.Diagnostics.Debug.WriteLine(" " + DegreesLeft + " " + CalculateDegreesLeft());
 
-				if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
+                if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 				{
 					CalibrationDataRight.Calibrated = true;
-//// Same for right?????
 					CalculateAverageErrorRight();
 					CalculateDegreesRight();
-				}
+                }
 			}
 			catch (Exception ex)
 			{
-				//IsCalibrated = false;
-				return true; // what to do here
+                //IsCalibrated = false;
+                System.Diagnostics.Debug.WriteLine(ex + " "+ DegreesLeft + " " + DegreesRight);
+                return true; // what to do here
 			}
 
 			IsCalibrated = true;
@@ -560,7 +550,6 @@ namespace GazeTrackingLibrary.Calibration
 	{
 		private int numOutliersRemovedLeft;
 		private int numOutliersRemovedRight;
-
 
 		#region Constructor
 
@@ -753,7 +742,6 @@ namespace GazeTrackingLibrary.Calibration
 
 			CalibrationDataLeft.Calibrated = true;
 			CalculateAverageErrorLeft();
-			//CalibrationDataLeft.AverageError = CalculateAverageErrorLeft();
 			CalculateDegreesLeft();
 
 			if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
@@ -789,8 +777,10 @@ namespace GazeTrackingLibrary.Calibration
 				{
 					meanLeft = Operations.Mean(ct.DifferenceVectorLeft);
 					stddevLeft = Operations.StandardDeviation(ct.DifferenceVectorLeft);
-					//write the sd (converted to degrees) as spatial precision
-				}
+                    //double averageErrorMM = ConvertPixToMm(stddevLeft);
+                    //double precision = (180 / Math.PI) * Math.Atan(averageErrorMM / (2 * GTSettings.Current.Calibration.DistanceFromScreen));
+                    //Console.Write(precision);
+                }
 
 				// Right
 				if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
@@ -822,7 +812,7 @@ namespace GazeTrackingLibrary.Calibration
 								numOutliersRemovedLeft++;
 							}
 
-						// remove right (if binocular)
+						// remove right (if binocular)                      
 						if (GTSettings.Current.Processing.TrackingMode == TrackingModeEnum.Binocular)
 						{
 							if (ct.DifferenceVectorRight != null && i <= ct.DifferenceVectorRight.Length)

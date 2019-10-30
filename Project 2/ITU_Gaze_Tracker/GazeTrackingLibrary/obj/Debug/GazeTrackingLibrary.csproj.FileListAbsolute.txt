@@ -3,3 +3,9 @@ C:\Users\Corey\Desktop\ITU_Gaze_Tracker\Debug\GazeTrackingLibrary.pdb
 C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.dll
 C:\Users\Corey\Desktop\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.pdb
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\Debug\GazeTrackingLibrary.dll
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\Debug\GazeTrackingLibrary.pdb
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.csprojAssemblyReference.cache
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.csproj.CopyComplete
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.dll
+C:\Users\Ajmal Hussain\Downloads\ITU_Gaze_Tracker\GazeTrackingLibrary\obj\Debug\GazeTrackingLibrary.pdb

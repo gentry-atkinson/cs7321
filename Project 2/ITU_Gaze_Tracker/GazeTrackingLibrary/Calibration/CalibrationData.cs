@@ -6,9 +6,7 @@ namespace GazeTrackingLibrary.Calibration
     {
         public bool Calibrated { get; set; }
 
-        public int AverageError { get; set; }
-		
-		//public double AverageError {get; set; }
+        public double AverageError { get; set; }
 
         public Matrix<double> CoeffsX { get; set; }
 
